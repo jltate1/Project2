@@ -1,0 +1,38 @@
+<aura:component controller="RESTConsumptionAPI" implements="forceCommunity:availableForAllPageTypes" access="global">
+    <aura:attribute type="String" name="hexNumber" />
+    <aura:attribute type="String" name="rgbNumber" />
+    <aura:attribute type="String" name="image" />
+    <aura:attribute type="String" name="nameOfColor" />
+    <aura:attribute type="Object" name="colorMap" default="{}" />
+    
+    <aura:attribute type="String" name="input" />
+    <aura:attribute type="String" name="colorSave" />
+    <aura:attribute type="String" name="saveMessage" />
+    
+    <aura:attribute type="Boolean" name="success" />
+    
+    <lightning:card title="Color API">
+        <div class="slds-card">
+            <lightning:input type="text" name="rgb" fieldLevelHelp="Input for Hex - 'hex=######', Input for RGB = 'rgb=#,#,#'" value="{!v.input}" label="Enter a valid rbg number or hex number" oncommit="{!c.handleClick}"/>
+        </div>
+        <div class="slds-card">
+            <lightning:button variant="brand" label="Convert and Show" title="Converts hex or rgb values and shows color" onclick="{!c.handleDisplay}" />
+        	<lightning:button variant="brand" label="Save Color" title="Save color to database" onclick="{!c.saveToDatabase}" />
+        </div>
+        <div class="slds-card">
+            <div class="slds-p-around_medium">
+                <c:colorAPIChild hex="{!v.hexNumber}" rgb="{!v.rgbNumber}" image2="{!v.image}" name="{!v.nameOfColor}" />
+            	<aura:if isTrue="{!v.success}">
+            		<p class="slds-text-color_success">{!v.saveMessage}</p>
+            	<aura:set attribute="else">
+                	<p class="slds-text-color_error">{!v.saveMessage}</p>
+            	</aura:set>
+        		</aura:if>
+            </div>
+        </div>
+        
+    </lightning:card>
+    
+    
+    
+</aura:component>

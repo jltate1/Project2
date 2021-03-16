@@ -1,0 +1,13 @@
+<aura:component >
+    <aura:attribute type="String" name="hex" />
+    <aura:attribute type="String" name="rgb" />
+    <aura:attribute type="String" name="image2" />
+    <aura:attribute type="String" name="name" />
+    
+    <p class="slds-p-horizontal_small">{!v.name}</p>
+    <p class="slds-p-horizontal_small">Hex: {!v.hex}</p>
+    <p class="slds-p-horizontal_small">RGB: {!v.rgb}</p>
+    <img src="{!v.image2}" ></img>
+ 
+
+</aura:component>
